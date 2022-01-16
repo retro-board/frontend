@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home';
-import Board from "@/views/Board";
-import Leader from "@/views/Leader";
+import Board from "@/views/board/Board";
+import Leader from "@/views/board/Leader";
 import CreateCompany from "@/views/company/Create";
 
 const routes = [
