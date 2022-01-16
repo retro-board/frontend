@@ -1,7 +1,6 @@
 <template>
-  <Navigation />
-
-  <div class="container">
+  <div class="min-h-full font-Poppins box-border">
+    <Navigation />
     <router-view/>
   </div>
 </template>
@@ -13,6 +12,9 @@ export default {
   components: {
     Navigation,
   },
+  setup() {
+    return {}
+  }
 }
 </script>
 

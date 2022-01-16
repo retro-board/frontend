@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "RegisterView",
+  name: "CompanyCreateView",
   components: {
   },
   setup() {
