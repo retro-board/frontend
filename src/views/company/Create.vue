@@ -27,7 +27,7 @@
 <script>
 import { ref } from "vue"
 import { useRouter } from "vue-router"
-import { retroBoard } from "@/retroboard/init"
+import { Company as RetroBoardCompany }  from "@/retroboard/Company"
 
 export default {
   name: "CompanyCreateView",
@@ -41,10 +41,10 @@ export default {
 
     const createCompany = async () => {
       try {
-        const { error } = await retroBoard.company.namecheck({
+        const { error } = await RetroBoardCompany.nameCheck({
           companyName: companyName,
         })
-        if (error) throw error
+        if (error) throw error;
         router.push({
           name: "Company"
         })

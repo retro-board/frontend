@@ -1,0 +1,36 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: retro-board
+  name: frontend
+  annotations:
+    cert-manager.io/cluster-issuer: acme-prod
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: frontend
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - retro-board.it
+        - www.retro-board.it
+      secretName: retro-board-frontend
+  rules:
+    - host: retro-board.it
+      http:
+        paths:
+          - backend:
+              service: frontend
+              port:
+                number: 8080
+            path: /
+    - host: www.retro-board.it
+      http:
+        paths:
+          - backend:
+              service:
+                name: frontend
+                port:
+                  number: 8080
+            path: /

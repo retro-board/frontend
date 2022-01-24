@@ -1,0 +1,43 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: retro-board
+  labels:
+    name: frontend
+    app: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: frontend
+    template:
+      metadata:
+        labels:
+          name: frontend
+          app: frontend
+      spec:
+        containers:
+          - name: frontend
+            image: registry.chewedfeed.com/retro-board/frontend:latest
+            imagePullPolicy: Always
+            ports:
+              - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: retro-board
+  labels:
+    name: frontend
+    app: frontend
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: frontend

@@ -8,8 +8,12 @@
        <ul class="flex flex-1 justify-end gap-x-10">
          <router-link class="cursor-pointer" to="/">Home</router-link>
          <router-link class="cursor-pointer" to="/board">Board</router-link>
-         <li class="cursor-pointer">Login</li>
-         <li class="cursor-pointer">Logout</li>
+
+         <li class="cursor-pointer" v-if="loggedIn">Logout</li>
+         <li class="cursor-pointer" v-else>
+           <a href="https://backend.retro-board.it/login">Login</a>
+         </li>
+
        </ul>
      </nav>
   </header>
@@ -18,7 +22,11 @@
 <script>
 export default {
   setup() {
-    return {}
+    let loggedIn = false;
+
+    return {
+      loggedIn,
+    }
   },
   name: 'NavigationComponent',
 }

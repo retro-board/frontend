@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  name: "VoteComponent"
+  name: "TimerComponent"
 }
 </script>
