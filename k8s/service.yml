@@ -12,18 +12,18 @@ spec:
   selector:
     matchLabels:
       name: frontend
-    template:
-      metadata:
-        labels:
-          name: frontend
-          app: frontend
-      spec:
-        containers:
-          - name: frontend
-            image: registry.chewedfeed.com/retro-board/frontend:latest
-            imagePullPolicy: Always
-            ports:
-              - containerPort: 8080
+  template:
+    metadata:
+      labels:
+        name: frontend
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: containers.home.develbox.info/retro-board/frontend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
 
 ---
 apiVersion: v1

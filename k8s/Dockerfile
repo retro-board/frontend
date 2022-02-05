@@ -11,7 +11,7 @@ RUN npm run build
 
 # Runner
 FROM node:lts-alpine AS runner
-COPY --from=builder /home/builder/dist .
+COPY --from=builder /home/builder/dist ./dist
 
 RUN npm install -g http-server
 EXPOSE 8080
