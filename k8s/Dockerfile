@@ -10,9 +10,9 @@ RUN npm install
 RUN npm run build
 
 # Runner
-FROM node:lts-alpine AS runner
-COPY --from=builder /home/builder/dist ./dist
+FROM nginx:stable-alpine AS runner
+COPY --from=builder /home/builder/dist /usr/share/nginx/html
 
-EXPOSE 8080
+EXPOSE 80
 
-CMD ["npm", "vue-cli-service", "serve"]
+CMD ["nginx", "-g", "daemon off;"]
