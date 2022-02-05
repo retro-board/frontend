@@ -7,7 +7,6 @@ export
 build-images:
 	nerdctl build --platform=arm64,amd64 --tag containers.home.develbox.info/retro-board/${SERVICE_NAME}:${GIT_COMMIT} -f ./k8s/Dockerfile .
 	nerdctl tag containers.home.develbox.info/retro-board/${SERVICE_NAME}:${GIT_COMMIT} containers.home.develbox.info/retro-board/${SERVICE_NAME}:latest
-	#nerdctl build --platform=arm64m,amd64 --output type=image,name=containers.home.develbox.info/retro-board/${SERVICE_NAME}:${GIT_COMMIT},push=true -f ./k8s/Dockerfile .
 
 .PHONY: publish-images
 publish-images:
