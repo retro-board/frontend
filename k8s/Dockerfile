@@ -10,9 +10,8 @@ RUN npm install
 RUN npm run build
 
 # Runner
-FROM nginx:stable-alpine AS runner
-COPY --from=builder /home/builder/dist /usr/share/nginx/html
+FROM caddy AS runner
+COPY --from=builder /home/builder/dist /srv
+COPY ./k8s/Caddyfile /etc/caddy/Caddyfile
 
 EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
