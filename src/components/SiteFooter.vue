@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-at-light-green text-black mt-10">
     <div class="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 items-center">
         <div>
           <p class="font-medium">
             Company

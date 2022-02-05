@@ -23,26 +23,32 @@ const routes = [
     path: '/board/setup',
     name: 'Board Setup',
     component: BoardSetup,
-  },
-  {
-    path: '/board/setup/:id',
-    name: 'Board',
-    component: BoardSetup,
-  },
-  {
-    path: '/board/:id/leader',
-    name: 'Board Leaders',
-    component: Leader,
-  },
-  {
-    path: '/board/:id',
-    name: 'Specific Board',
-    component: Board,
+    children: [
+      {
+        path: ':id',
+        name: 'Board',
+        Component: BoardSetup,
+      }
+    ]
   },
   {
     path: '/board',
     name: 'Default Board',
     component: Board,
+    children: [
+      {
+        path: ':id',
+        name: 'Board',
+        Component: Board,
+        children: [
+          {
+            path: 'leader',
+            name: 'Leader',
+            Component: Leader,
+          },
+        ]
+      }
+    ]
   },
   {
     path: '/boards',
@@ -51,23 +57,28 @@ const routes = [
   },
   {
     path: '/privacy',
-    name: 'Privacy'
+    name: 'Privacy',
+    Component: Home,
   },
   {
     path: '/terms',
-    name: 'Terms'
+    name: 'Terms',
+    Component: Home,
   },
   {
     path: '/about',
-    name: 'About'
+    name: 'About',
+    Component: Home,
   },
   {
     path: '/contact',
-    name: 'Contact'
+    name: 'Contact',
+    Component: Home,
   },
   {
     path: '/pricing',
-    name: 'Pricing'
+    name: 'Pricing',
+    Component: Home,
   },
 ]
 
