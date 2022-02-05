@@ -13,7 +13,6 @@ RUN npm run build
 FROM node:lts-alpine AS runner
 COPY --from=builder /home/builder/dist ./dist
 
-RUN npm install -g http-server
 EXPOSE 8080
 
-CMD ["http-server", "dist", "-p", "8080"]
+CMD ["npm", "vue-cli-service", "serve"]
