@@ -1,5 +1,5 @@
 SERVICE_NAME=frontend
-GIT_COMMIT=`git rev-parse HEAD`
+GIT_COMMIT=`git rev-parse --short HEAD`
 -include .env
 export
 
