@@ -6,6 +6,10 @@
   </div>
 
   <div class="relative block p-4 border border-gray-500 shadow-xl rounded-xl mb-2 bg-white" v-else>
+    <a class="absolute left-2 top-1" href="">
+      <font-awesome-icon name="minus-square" :icon="['far', 'minus-square']" />
+    </a>
+
     <div>
       {{ action }}
     </div>

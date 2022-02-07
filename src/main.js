@@ -12,12 +12,18 @@ import {
     faThumbsUp,
     faCheck,
 } from '@fortawesome/free-solid-svg-icons'
+import {
+    faPlusSquare,
+    faMinusSquare
+} from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(
     faThumbsDown,
     faThumbsUp,
     faCheck,
+    faPlusSquare,
+    faMinusSquare,
 )
 
 createApp(App)
