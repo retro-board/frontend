@@ -17,6 +17,9 @@ publish-images:
 .PHONY: build
 build: build-images publish-images
 
+.PHONY: publish
+publish: publish-images
+
 .PHONY: deploy
 deploy:
 	kubectl set image deployment/${SERVICE_NAME} ${SERVICE_NAME}=containers.home.develbox.info/retro-board/${SERVICE_NAME}:${GIT_COMMIT} --namespace=retro-board
