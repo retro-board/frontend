@@ -15,7 +15,6 @@
          <li class="cursor-pointer" v-else>
            <a href="https://backend.retro-board.it/account/login">Login</a>
          </li>
-
        </ul>
      </nav>
   </header>

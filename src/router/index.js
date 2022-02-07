@@ -20,33 +20,31 @@ const routes = [
     component: CreateCompany,
   },
   {
-    path: '/board/setup',
-    name: 'Board Setup',
-    component: BoardSetup,
+    path: '/board/:id',
+    name: 'Board',
+    component: Board,
     children: [
       {
-        path: ':id',
-        name: 'Board',
-        Component: BoardSetup,
-      }
-    ]
+        path: 'setup',
+        name: 'Board Setup',
+        component: BoardSetup,
+      },
+      {
+        path: 'leader',
+        name: 'Board Leader',
+        component: Leader,
+      },
+    ],
   },
   {
     path: '/board',
     name: 'Default Board',
-    component: Board,
+    component: BoardList,
     children: [
       {
-        path: ':id',
-        name: 'Board',
-        Component: Board,
-        children: [
-          {
-            path: 'leader',
-            name: 'Leader',
-            Component: Leader,
-          },
-        ]
+        path: 'setup',
+        name: 'Board Setup',
+        Component: BoardSetup,
       }
     ]
   },
