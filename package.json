@@ -12,6 +12,8 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
+    "@headlessui/vue": "^1.4.3",
+    "@heroicons/vue": "^1.0.5",
     "autoprefixer": "^10.4.2",
     "axios": "^0.25.0",
     "cookie": "^0.4.1",
