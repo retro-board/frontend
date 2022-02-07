@@ -8,6 +8,9 @@ const store = createStore({
         board: {
             name: 'Network Team',
         },
+        user: {
+            token: null,
+        },
     },
     getters: {},
     actions: {},
