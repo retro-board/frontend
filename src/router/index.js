@@ -20,8 +20,8 @@ const routes = [
     component: CreateCompany,
   },
   {
-    path: '/board/:id',
-    name: 'Board',
+    path: '/board/:board_team',
+    name: 'TeamBoard',
     component: Board,
     children: [
       {

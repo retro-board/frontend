@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-3xl mx-auto text-center py-5">
     <h1 class="max-w-3xl md:text-4xl font-medium text-white mb-4 md:mb-6">
-      {{ boardTitle }}
+      {{ boardName }}
     </h1>
   </div>
 
@@ -64,19 +64,19 @@
 <script>
 import Topic from '@/components/Topic'
 import Action from '@/components/Action'
+import { mapState } from 'vuex'
 
 export default {
   name: "BoardView",
+  computed: {
+    ...mapState({
+      boardName: state => state.board.name,
+      companyName: state => state.company.name,
+    })
+  },
   components: {
     Topic,
     Action,
-  },
-  setup() {
-    const boardTitle = "ChewedFeed Retro-Board Board"
-
-    return {
-      boardTitle
-    }
   },
 }
 </script>
