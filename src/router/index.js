@@ -3,17 +3,9 @@ import {
   createWebHistory
 } from 'vue-router'
 
-import Home from '@/views/Home';
 import Board from "@/views/board/Board";
 import BoardSetup from '@/views/board/Setup';
-import Leader from "@/views/board/Leader";
 import BoardList from '@/views/board/List';
-import CreateCompany from "@/views/company/Create";
-import Pricing from '@/views/site/Pricing';
-import About from '@/views/site/About';
-import Contact from "@/views/site/Contact";
-import Privacy from "@/views/site/Privacy";
-import Terms from "@/views/site/Terms";
 
 import store from '@/store';
 
@@ -24,12 +16,12 @@ const routes = [
     meta: {
       isPublic: true
     },
-    component: Home,
+    component: () => import('@/views/Home')
   },
   {
     path: '/pricing',
     name: 'Pricing',
-    component: Pricing,
+    component: () => import('@/views/site/Pricing'),
     meta: {
       isPublic: true
     },
@@ -37,7 +29,7 @@ const routes = [
   {
     path: '/terms',
     name: 'Terms',
-    component: Terms,
+    component: () => import('@/views/site/Terms'),
     meta: {
       isPublic: true
     },
@@ -45,7 +37,7 @@ const routes = [
   {
     path: '/privacy',
     name: 'Privacy',
-    component: Privacy,
+    component: () => import('@/views/site/Privacy'),
     meta: {
       isPublic: true
     },
@@ -53,7 +45,7 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    component: About,
+    component: () => import('@/views/site/About'),
     meta: {
       isPublic: true
     },
@@ -61,7 +53,7 @@ const routes = [
   {
     path: '/contact',
     name: 'Contact',
-    component: Contact,
+    component: () => import('@/views/site/Contact'),
     meta: {
       isPublic: true
     },
@@ -70,9 +62,9 @@ const routes = [
     path: '/company/create',
     name: 'CreateCompany',
     meta: {
-      requiresAuth: true,
+      backendRedirected: true,
     },
-    component: CreateCompany,
+    component: () => import('@/views/company/Create'),
   },
   {
     path: '/board/:board_team',
@@ -91,7 +83,7 @@ const routes = [
       {
         path: 'leader',
         name: 'BoardLeader',
-        component: Leader,
+        component: () => import('@/views/board/Leader'),
       },
     ],
   },
@@ -115,9 +107,24 @@ const routes = [
     name: 'BoardList',
     component: BoardList,
     meta: {
-      requiresAuth: true,
+      backendRedirected: true,
     },
   },
+  {
+    path: '/user',
+    name: 'User',
+    component: () => import('@/views/user/User'),
+    children: [
+      {
+        path: 'callback/:userid/:domain/:role',
+        name: 'UserCallback',
+        component: () => import('@/views/user/Callback'),
+        meta: {
+          backendRedirected: true,
+        }
+      },
+    ],
+  }
 ]
 
 const router = createRouter({
@@ -130,6 +137,8 @@ router.beforeEach((to, from, next) => {
     next({
       name: 'Home',
     })
+  } else if (to.meta.backendRedirected && !store.state.user.token) {
+    next();
   } else {
     next()
   }

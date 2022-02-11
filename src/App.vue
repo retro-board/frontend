@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-full font-Poppins bg-gray-800 box-border dark:bg-black">
+  <div class="h-full h-screen font-Poppins bg-gray-800 box-border dark:bg-black">
     <Navigation />
     <router-view/>
     <SiteFooter />

@@ -13,7 +13,11 @@ const store = createStore({
         },
     },
     getters: {},
-    actions: {},
+    actions: {
+        fetchUserData() {
+            console.log("tester");
+        }
+    },
     mutations: {},
     modules: {},
 })

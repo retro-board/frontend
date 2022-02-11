@@ -16,7 +16,7 @@
 
          <li class="cursor-pointer" v-if="loggedIn">Logout</li>
          <li class="cursor-pointer" v-else>
-           <a href="https://backend.retro-board.it/account/login">Login</a>
+           <a :href="accountURL + '/account/login'">Login</a>
          </li>
        </ul>
      </nav>
@@ -34,9 +34,14 @@ export default {
   },
   setup() {
     let loggedIn = false;
+    let accountURL = "https://backend.retro-board.it"
+    if (process.env.VUE_APP_API_URL) {
+      accountURL = process.env.VUE_APP_API_URL;
+    }
 
     return {
       loggedIn,
+      accountURL,
     }
   },
   name: 'NavigationComponent',
