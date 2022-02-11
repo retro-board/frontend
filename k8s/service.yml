@@ -25,6 +25,9 @@ spec:
           ports:
             - containerPort: 80
               protocol: TCP
+          env:
+            - name: VUE_APP_API_URL
+              value: https://backend.retro-board.it
 
 ---
 apiVersion: v1
