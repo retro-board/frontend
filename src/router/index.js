@@ -117,7 +117,7 @@ const routes = [
     component: () => import('@/views/user/User'),
   },
   {
-    path: '/user/callback/:userid/:domain/:role',
+    path: '/user/callback',
     name: 'UserCallback',
     component: () => import('@/views/user/Callback'),
     meta: {

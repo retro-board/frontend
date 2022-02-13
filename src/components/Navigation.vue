@@ -14,7 +14,9 @@
          <router-link class="cursor-pointer" to="/">Home</router-link>
          <router-link class="cursor-pointer" to="/board">Board</router-link>
 
-         <li class="cursor-pointer" v-if="loggedIn">Logout</li>
+         <li class="cursor-pointer" v-if="loggedIn">
+           <a @click="logout">Logout</a>
+         </li>
          <li class="cursor-pointer" v-else>
            <a :href="accountURL + '/account/login'">Login</a>
          </li>
@@ -24,24 +26,32 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, useStore } from "vuex";
 
 export default {
   computed: {
     ...mapState({
       companyName: state => state.company.name,
+      loggedIn: state => state.user.token !== null,
     })
   },
   setup() {
-    let loggedIn = false;
+    const store = useStore()
+
+    function logout() {
+      store.dispatch("logout").then(() => {
+        document.location.href = "/"
+      });
+    }
+
     let accountURL = "https://backend.retro-board.it"
     if (process.env.VUE_APP_API_URL) {
       accountURL = process.env.VUE_APP_API_URL;
     }
 
     return {
-      loggedIn,
       accountURL,
+      logout,
     }
   },
   name: 'NavigationComponent',
