@@ -10,8 +10,8 @@ RUN npm install
 RUN npm run build
 
 # Runner
-FROM caddy AS runner
+FROM nginx AS runner
 COPY --from=builder /home/builder/dist /srv
-COPY ./k8s/Caddyfile /etc/caddy/Caddyfile
+COPY ./k8s/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
