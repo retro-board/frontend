@@ -1,6 +1,6 @@
 :80 {
         encode gzip zstd
-        file_server
         root * /srv
+        file_server
         try_files {path} /
 }
