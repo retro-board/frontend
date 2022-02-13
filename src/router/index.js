@@ -74,18 +74,19 @@ const routes = [
       requiresAuth: false,
       isPublic: true,
     },
-    children: [
-      {
-        path: 'setup',
-        name: 'BoardSetup',
-        component: BoardSetup,
-      },
-      {
-        path: 'leader',
-        name: 'BoardLeader',
-        component: () => import('@/views/board/Leader'),
-      },
-    ],
+  },
+  {
+    path: '/board/:board_team/setup',
+    name: 'BoardSetup',
+    meta: {
+      requiresAuth: true,
+    },
+    component: BoardSetup,
+  },
+  {
+    path: '/board/:board_team/leader',
+    name: 'BoardLeader',
+    component: () => import('@/views/board/Leader'),
   },
   {
     path: '/board',
@@ -114,16 +115,14 @@ const routes = [
     path: '/user',
     name: 'User',
     component: () => import('@/views/user/User'),
-    children: [
-      {
-        path: 'callback/:userid/:domain/:role',
-        name: 'UserCallback',
-        component: () => import('@/views/user/Callback'),
-        meta: {
-          backendRedirected: true,
-        }
-      },
-    ],
+  },
+  {
+    path: '/user/callback/:userid/:domain/:role',
+    name: 'UserCallback',
+    component: () => import('@/views/user/Callback'),
+    meta: {
+      backendRedirected: true,
+    },
   }
 ]
 

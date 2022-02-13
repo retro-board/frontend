@@ -1,30 +1,20 @@
 <template>
   <div>
-    {{ dataSet }}
-
     Bob
-
-    {{ $route.params }}
   </div>
 </template>
 
 <script>
-export default {
-  name: "CallbackPage",
-  setup() {
-    let userId = this.$route.params.userid
-    let domain = this.$route.params.domain
-    let role = this.$route.params.role
-    let dataSet = "userId: " + userId + " domain: " + domain + " role: " + role
-    console.log(dataSet)
+import { useRoute } from 'vue-router'
 
-    return {
-      dataSet,
-    }
+export default {
+  name: "UserCallback",
+  setup() {
+    let route = useRoute()
+
+    console.log(route.params)
+
+    return {}
   },
 }
 </script>
-
-<style scoped>
-
-</style>
