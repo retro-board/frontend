@@ -1,6 +1,6 @@
 <template>
   <header class="bg-retro-color-a text-black border-white border-2 my-2 rounded-t-lg">
-     <nav class="container py-3 px-4 flex flex-col gap-4 items-center sm:flex-row">
+     <nav class="py-3 px-4 flex flex-col gap-4 items-center sm:flex-row">
        <div class="flex flex-1 gap-x-6">
          <a href="/">
            <img src="@/assets/images/logo.png" alt="Retro-Board" class="w-10" />
