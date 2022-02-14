@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import jwtDecode from "jwt-decode";
 
 const store = createStore({
     state: {
@@ -25,10 +26,7 @@ const store = createStore({
             for (let step = 0; step < cookies.length; step++) {
                 let cookie = cookies[step].split('=');
                 if (cookie[0] === 'retro_user') {
-                    let user = cookie[1];
-                    user = user.replaceAll('"', '');
-                    user = user.replaceAll("&#34", '"');
-                    user = JSON.parse(user);
+                    let user = jwtDecode(cookie[1]);
                     commit('setUser', {
                         id: user.id,
                         name: user.name,
@@ -48,7 +46,6 @@ const store = createStore({
             sessionStorage.removeItem('TOKEN')
         },
         setUser(state, userData) {
-            console.log(userData);
             state.user.id = userData.id;
             state.user.name = userData.name;
             state.company.name = userData.domain;
