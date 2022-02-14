@@ -1,8 +1,12 @@
 <template>
-  <div class="h-full h-screen font-Poppins bg-gray-800 box-border dark:bg-black">
-    <Navigation />
-    <router-view/>
-    <SiteFooter />
+  <div class="h-full h-screen font-Poppins bg-retro-color-a box-border dark:bg-retro-color-a p-3">
+    <div class="p-2 py-1 bg-retro-color-c border-white border-2 rounded">
+      <Navigation />
+      <div class="p-2 border-white border-2">
+        <router-view />
+      </div>
+      <SiteFooter />
+    </div>
   </div>
 </template>
 

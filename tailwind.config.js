@@ -10,6 +10,9 @@ module.exports = {
         "at-light-green": "#44BA9F",
         "at-green": "#286D5D",
         "light-grey": "#F1F1F1",
+        "retro-color-a": "#BFCBDE",
+        "retro-color-c": "#E0DDD8",
+        "retro-color-b": "#EEEDE9",
       },
     },
     fontFamily: {

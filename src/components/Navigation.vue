@@ -1,6 +1,6 @@
 <template>
-  <header class="bg-at-light-green text-black">
-     <nav class="container py-5 px-4 flex flex-col gap-4 items-center sm:flex-row">
+  <header class="bg-retro-color-a text-black border-white border-2 my-2 rounded-t-lg">
+     <nav class="container py-3 px-4 flex flex-col gap-4 items-center sm:flex-row">
        <div class="flex flex-1 gap-x-6">
          <a href="/">
            <img src="@/assets/images/logo.png" alt="Retro-Board" class="w-10" />
@@ -12,7 +12,7 @@
        </div>
        <ul class="flex flex-1 justify-end gap-x-10">
          <router-link class="cursor-pointer" to="/">Home</router-link>
-         <router-link class="cursor-pointer" to="/board">Board</router-link>
+         <router-link class="cursor-pointer" to="/board" v-if="loggedIn">Boards</router-link>
 
          <li class="cursor-pointer" v-if="loggedIn">
            <a @click="logout">Logout</a>
