@@ -79,10 +79,19 @@ const routes = [
     },
   },
   {
+    path: "/company",
+    name: "CompanyInfo",
+    meta: {
+      requiresAuth: true,
+      title: "Company - Retro Board",
+    },
+    component: () => import('@/views/company/Company'),
+  },
+  {
     path: '/company/create',
     name: 'CreateCompany',
     meta: {
-      backendRedirected: true,
+      requiresAuth: true,
       title: "Create Company - Retro Board",
     },
     component: () => import('@/views/company/Create'),
@@ -162,6 +171,11 @@ const routes = [
       backendRedirected: true,
       title: "User Callback - Retro Board",
     },
+  },
+  {
+    path: '/404',
+    name: 'NotFound',
+    component: () => import('@/views/site/NotFound'),
   }
 ]
 

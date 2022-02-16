@@ -1,56 +1,106 @@
 import { createStore } from 'vuex'
 import jwtDecode from "jwt-decode";
+import axiosClient from '../axios';
 
 const store = createStore({
     state: {
         company: {
-            name: null,
+            data: {
+                name: null,
+                domain: null,
+                subDomain: null,
+                enabled: false,
+            }
         },
         board: {
             name: null,
         },
         user: {
-            id: null,
-            name: null,
+            data: {
+                id: null,
+                name: null,
+                role: null,
+            },
             token: sessionStorage.getItem('TOKEN'),
-            role: null,
         },
     },
-    getters: {},
+    getters: {
+        getCompany: state => {
+            return state.company;
+        },
+        getBoard: state => {
+            return state.board;
+        },
+        getUser: state => {
+            return state.user;
+        },
+    },
     actions: {
         logout({commit}) {
             commit('logout')
         },
-        getUserData({commit}) {
+        parseLoginData({commit}) {
             let cookies = document.cookie.split(';');
             for (let step = 0; step < cookies.length; step++) {
                 let cookie = cookies[step].split('=');
-                if (cookie[0] === 'retro_user') {
-                    let user = jwtDecode(cookie[1]);
-                    commit('setUser', {
-                        id: user.id,
-                        name: user.name,
-                        domain: user.domain,
-                        role: user.role,
-                    });
+                let dataset = {}
+                switch (cookie[0].trim()) {
+                    case 'retro_user':
+                        dataset = jwtDecode(cookie[1]);
+                        commit('setUser', {
+                            id: dataset.id,
+                            name: dataset.name,
+                            role: dataset.role,
+                        });
+                        break;
+                    case 'retro_company':
+                        dataset = jwtDecode(cookie[1]);
+                        commit('setCompany', {
+                            companyEnabled: dataset.enabled,
+                            subDomain: dataset.subDomain,
+                            domain: dataset.domain,
+                            companyName: dataset.name,
+                        });
+                        break;
                 }
             }
+        },
+        createCompany({commit}, companyInfo) {
+            return axiosClient.post("/company", companyInfo)
+                .then(({data}) => {
+                    commit('setCompany', {
+                        companyEnabled: data.enabled,
+                        subDomain: data.subDomain,
+                        domain: data.domain,
+                        companyName: data.name,
+                        role: data.user_role,
+                    });
+                    return data;
+                })
         },
     },
     mutations: {
         logout: (state) => {
-            state.user.id = null;
-            state.user.name = null;
-            state.company.name = null;
-            state.user.role = null;
+            state.user.data = {};
+            state.company.data = {};
+
             sessionStorage.removeItem('TOKEN')
         },
-        setUser(state, userData) {
-            state.user.id = userData.id;
-            state.user.name = userData.name;
-            state.company.name = userData.domain;
-            state.user.role = userData.role;
+        setUser: (state, userData) => {
+            state.user.data = userData;
+            state.user.data.id = userData.id;
+            state.user.data.name = userData.name;
+            state.user.data.role = userData.role;
+
             sessionStorage.setItem('TOKEN', userData.id);
+        },
+        setCompany: (state, companyData) => {
+            state.company.data = companyData;
+
+            state.company.data.name = companyData.companyName;
+            state.company.data.domain = companyData.domain;
+            state.company.data.subDomain = companyData.subDomain;
+            state.company.data.enabled = companyData.enabled;
         },
     },
     modules: {},
