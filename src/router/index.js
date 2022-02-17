@@ -97,7 +97,7 @@ const routes = [
     component: () => import('@/views/company/Create'),
   },
   {
-    path: '/board/:board_team',
+    path: '/board/:board_id',
     name: 'TeamBoard',
     component: Board,
     meta: {
@@ -107,7 +107,7 @@ const routes = [
     },
   },
   {
-    path: '/board/:board_team/setup',
+    path: '/board/:board_id/setup',
     name: 'BoardSetup',
     meta: {
       requiresAuth: true,

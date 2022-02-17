@@ -6,7 +6,9 @@ const axiosClient = axios.create({
     baseURL: process.env.VUE_APP_API_URL
 })
 axiosClient.interceptors.request.use(config => {
-    config.headers.Authorization = store.state.user.token;
+    config.headers = {
+        'X-User-Token': store.state.user.token
+    }
     return config
 })
 axiosClient.interceptors.response.use(response => {

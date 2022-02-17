@@ -40,7 +40,6 @@ export default {
   },
   setup() {
     let store = useStore()
-    store.dispatch("parseLoginData")
 
     const companyInfo = {
       name: "",
@@ -71,6 +70,8 @@ export default {
           loading.value = false
           break
       }
+
+      console.log(companyInfo, store.state.company)
 
       store.dispatch("createCompany", companyInfo).then(() => {
         loading.value = false

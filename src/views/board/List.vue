@@ -1,37 +1,35 @@
 <template>
-  <div></div>
+  <div v-if="boards.loading" class="flex justify-center">Loading...</div>
+  <div v-else-if="boards.data.length">
+    <BoardsList
+        v-for="board in boards.data"
+        :key="board.id"
+        :id="board.id"
+        :name="board.name"
+        :teamScore="board.team_score"
+        :teamScorePrevious="board.previous_score"
+        :retrosCompleted="board.retros_completed" />
+  </div>
 </template>
 
 <script>
-import axios from 'axios';
+import store from '@/store'
+import BoardsList from '@/components/BoardsList'
 
 export default {
   name: "BoardList",
-  components: {},
+  components: {
+    BoardsList,
+  },
+  computed: {
+    boards() {
+      return store.state.boards
+    }
+  },
+
   setup() {
-    return {
-      boards: [],
-      loading: true,
-      error: null,
-      fetchBoards() {
-        this.loading = true;
-        this.error = null;
-        axios
-          .get("https://api.retro-board.io/boards", {
-            params: {
-              userId: this.$store.state.user.id
-            }
-          })
-          .then(response => {
-            this.boards = response.data;
-            this.loading = false;
-          })
-          .catch(error => {
-            this.error = error;
-            this.loading = false;
-          });
-      }
-    };
+    //store.dispatch("parseLoginData")
+    store.dispatch("getBoards")
   },
 }
 </script>

@@ -11,10 +11,13 @@ import {
     faThumbsDown,
     faThumbsUp,
     faCheck,
+    faAngleDoubleUp,
+    faAngleDoubleDown,
+    faExchangeAlt,
 } from '@fortawesome/free-solid-svg-icons'
 import {
     faPlusSquare,
-    faMinusSquare
+    faMinusSquare,
 } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -24,6 +27,9 @@ library.add(
     faCheck,
     faPlusSquare,
     faMinusSquare,
+    faAngleDoubleUp,
+    faAngleDoubleDown,
+    faExchangeAlt,
 )
 
 createApp(App)

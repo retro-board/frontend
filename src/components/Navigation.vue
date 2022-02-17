@@ -12,7 +12,7 @@
        </div>
        <ul class="flex flex-1 justify-end gap-x-10">
          <router-link class="cursor-pointer" to="/">Home</router-link>
-         <router-link class="cursor-pointer" to="/board" v-if="loggedIn">Boards</router-link>
+         <router-link class="cursor-pointer" to="/boards" v-if="loggedIn">Boards</router-link>
 
          <li class="cursor-pointer" v-if="loggedIn">
            <a @click="logout">Logout</a>
@@ -37,6 +37,7 @@ export default {
   },
   setup() {
     const store = useStore()
+    store.dispatch("parseLoginData")
 
     function logout() {
       store.dispatch("logout").then(() => {

@@ -12,6 +12,10 @@ const store = createStore({
                 enabled: false,
             }
         },
+        boards: {
+            loading: true,
+            data: [],
+        },
         board: {
             name: null,
         },
@@ -56,8 +60,8 @@ const store = createStore({
                     case 'retro_company':
                         dataset = jwtDecode(cookie[1]);
                         commit('setCompany', {
-                            companyEnabled: dataset.enabled,
-                            subDomain: dataset.subDomain,
+                            enabled: dataset.enabled,
+                            subDomain: dataset.subdomain,
                             domain: dataset.domain,
                             companyName: dataset.name,
                         });
@@ -69,7 +73,7 @@ const store = createStore({
             return axiosClient.post("/company", companyInfo)
                 .then(({data}) => {
                     commit('setCompany', {
-                        companyEnabled: data.enabled,
+                        enabled: data.enabled,
                         subDomain: data.subDomain,
                         domain: data.domain,
                         companyName: data.name,
@@ -78,11 +82,25 @@ const store = createStore({
                     return data;
                 })
         },
+        getBoards({commit}) {
+            let getURL = "/boards"
+                getURL += "?subdomain=" + this.state.company.data.subDomain;
+                getURL += "&role=" + this.state.user.data.role;
+
+            return axiosClient.get(getURL)
+                .then(({data}) => {
+                    commit("setBoardsLoading", false);
+                    commit('setBoards', data);
+                    return data;
+                })
+        },
     },
     mutations: {
         logout: (state) => {
             state.user.data = {};
             state.company.data = {};
+            document.cookie = "retro_user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "retro_company=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
             sessionStorage.removeItem('TOKEN')
         },
@@ -101,6 +119,12 @@ const store = createStore({
             state.company.data.domain = companyData.domain;
             state.company.data.subDomain = companyData.subDomain;
             state.company.data.enabled = companyData.enabled;
+        },
+        setBoardsLoading: (state, loading) => {
+            state.boards.loading = loading;
+        },
+        setBoards: (state, boardsData) => {
+            state.boards.data = boardsData;
         },
     },
     modules: {},
