@@ -5,6 +5,8 @@ WORKDIR /frontend
 
 COPY . .
 
+ENV VUE_APP_API_URL=https://backend.retro-board.it
+
 RUN npm install
 RUN npm run build
 
