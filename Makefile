@@ -13,7 +13,6 @@ publish-images:
 	nerdctl push containers.home.develbox.info/retro-board/${SERVICE_NAME}:${GIT_COMMIT} --all-platforms
 	nerdctl push containers.home.develbox.info/retro-board/${SERVICE_NAME}:latest --all-platforms
 
-
 .PHONY: build
 build: build-images publish-images
 

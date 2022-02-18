@@ -77,7 +77,7 @@ export default {
 
       store.dispatch("createCompany", companyInfo).then(() => {
         loading.value = false
-        router.push("Boards")
+        //router.push("Boards")
       }).catch(err => {
         loading.value = false
         errorMsg.value = err.message
