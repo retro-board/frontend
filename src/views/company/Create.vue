@@ -61,11 +61,12 @@ export default {
       loading.value = true
       companyInfo.domain = store.state.company.data.domain
 
-      switch (companyInfo.subDomain) {
+      switch (companyInfo.subDomain.toLowerCase()) {
         case "retro-board":
         case "www":
         case "backend":
         case "api":
+        case "blank-company":
           errorMsg.value = "Subdomain cannot be " + companyInfo.subDomain
           setTimeout(() => {
             errorMsg.value = null
