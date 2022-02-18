@@ -71,8 +71,6 @@ export default {
           break
       }
 
-      console.log(companyInfo, store.state.company)
-
       store.dispatch("createCompany", companyInfo).then(() => {
         loading.value = false
         router.push("Boards")
