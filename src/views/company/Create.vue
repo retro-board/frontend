@@ -67,6 +67,9 @@ export default {
         case "backend":
         case "api":
           errorMsg.value = "Subdomain cannot be " + companyInfo.subDomain
+          setTimeout(() => {
+            errorMsg.value = null
+          }, 5000)
           loading.value = false
           break
       }

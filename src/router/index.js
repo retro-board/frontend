@@ -40,6 +40,20 @@ const routes = [
     meta: {
       isPublic: true,
       title: "Pricing - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Pricing - Retro Board'
+        },
+        {
+          property: 'og:description',
+          content: 'Pricing - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'Pricing - Retro Board'
+        },
+      ],
     },
   },
   {
@@ -49,6 +63,20 @@ const routes = [
     meta: {
       isPublic: true,
       title: "Terms - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Terms - Retro Board'
+        },
+        {
+          property: 'og:description',
+          content: 'Terms - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'Terms - Retro Board'
+        },
+      ],
     },
   },
   {
@@ -58,6 +86,20 @@ const routes = [
     meta: {
       isPublic: true,
       title: "Privacy - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Privacy - Retro Board'
+        },
+        {
+          property: 'og:description',
+          content: 'Privacy - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'Privacy - Retro Board'
+        },
+      ],
     },
   },
   {
@@ -67,6 +109,20 @@ const routes = [
     meta: {
       isPublic: true,
       title: "About - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'About - Retro Board'
+        },
+        {
+          property: 'og:description',
+          content: 'About - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'About - Retro Board'
+        },
+      ],
     },
   },
   {
@@ -76,6 +132,20 @@ const routes = [
     meta: {
       isPublic: true,
       title: "Contact - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Contact - Retro Board'
+        },
+        {
+          property: 'og:description',
+          content: 'Contact - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'Contact - Retro Board'
+        },
+      ],
     },
   },
   {
@@ -84,6 +154,20 @@ const routes = [
     meta: {
       requiresAuth: true,
       title: "Company - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Company - Retro Board'
+        },
+        {
+          property: 'og:description',
+          content: 'Company - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'Company - Retro Board'
+        },
+      ],
     },
     component: () => import('@/views/company/Company'),
   },
@@ -93,6 +177,20 @@ const routes = [
     meta: {
       requiresAuth: true,
       title: "Create Company - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Create Company - Retro Board'
+        },
+        {
+          property: 'og:description',
+          content: 'Create Company - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'Create Company - Retro Board'
+        },
+      ],
     },
     component: () => import('@/views/company/Create'),
   },
@@ -104,6 +202,20 @@ const routes = [
       requiresAuth: false,
       isPublic: true,
       title: store.state.board.name + " - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: store.state.board.name + " - Retro Board"
+        },
+        {
+          property: 'og:description',
+          content: store.state.board.name + " - Retro Board"
+        },
+        {
+          property: 'og:title',
+          content: store.state.board.name + " - Retro Board"
+        },
+      ],
     },
   },
   {
@@ -112,6 +224,20 @@ const routes = [
     meta: {
       requiresAuth: true,
       title: store.state.board.name + " Setup - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: store.state.board.name + " Setup - Retro Board"
+        },
+        {
+          property: 'og:description',
+          content: store.state.board.name + " Setup - Retro Board"
+        },
+        {
+          property: 'og:title',
+          content: store.state.board.name + " Setup - Retro Board"
+        },
+      ],
     },
     component: BoardSetup,
   },
@@ -122,6 +248,20 @@ const routes = [
     meta: {
       requiresAuth: true,
       title: store.state.board.name + " Leader - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: store.state.board.name + " Leader - Retro Board"
+        },
+        {
+          property: 'og:description',
+          content: store.state.board.name + " Leader - Retro Board"
+        },
+        {
+          property: 'og:title',
+          content: store.state.board.name + " Leader - Retro Board"
+        },
+      ],
     },
   },
   {
@@ -131,6 +271,20 @@ const routes = [
     meta: {
       requiresAuth: true,
       title: "Board - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Board - Retro Board'
+        },
+        {
+          property: 'og:description',
+          content: 'Board - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'Board - Retro Board'
+        },
+      ],
     },
     children: [
       {
@@ -140,6 +294,20 @@ const routes = [
         meta: {
           requiresAuth: true,
           title: "Create Board - Retro Board",
+          metaTags: [
+            {
+              name: 'description',
+              content: 'Create Board - Retro Board'
+            },
+            {
+              property: 'og:description',
+              content: 'Create Board - Retro Board'
+            },
+            {
+              property: 'og:title',
+              content: 'Create Board - Retro Board'
+            },
+          ],
         },
       }
     ]
@@ -152,6 +320,20 @@ const routes = [
       backendRedirected: true,
       requiresAuth: true,
       title: "Boards - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Boards - Retro Board'
+        },
+        {
+          property: 'og:description',
+          content: 'Boards - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'Boards - Retro Board'
+        },
+      ],
     },
   },
   {
@@ -161,6 +343,20 @@ const routes = [
     meta: {
       requiresAuth: true,
       title: "User - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'User - Retro Board'
+        },
+        {
+          property: 'og:description',
+          content: 'User - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'User - Retro Board'
+        },
+      ],
     },
   },
   {
@@ -170,13 +366,44 @@ const routes = [
     meta: {
       backendRedirected: true,
       title: "User Callback - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'User Callback - Retro Board'
+        },
+        {
+          property: 'og:description',
+          content: 'User Callback - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'User Callback - Retro Board'
+        },
+      ],
     },
   },
   {
     path: '/404',
     name: 'NotFound',
     component: () => import('@/views/site/NotFound'),
-  }
+    meta: {
+      title: "Not Found - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Not Found - Retro Board'
+        },
+        {
+          property: 'og:description',
+          content: 'Not Found - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'Not Found - Retro Board'
+        },
+      ],
+    },
+  },
 ]
 
 const router = createRouter({
