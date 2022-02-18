@@ -5,7 +5,7 @@
       <p class="text-red-500">{{ errorMsg }}</p>
     </div>
 
-    <form @submit="createCompany" class="p-8 flex flex-col bg-light-grey rounded-md shadow-lg">
+    <form @submit.prevent="createCompany" class="p-8 flex flex-col bg-light-grey rounded-md shadow-lg">
       <h1 class="text-3xl text-at-light-green mb-4">
         Create Company
       </h1>
@@ -56,8 +56,7 @@ export default {
     companyInfo.subDomain = store.state.company.data.domain
     companyInfo.userRole = store.state.user.data.role
 
-    const createCompany = (ev) => {
-      ev.preventDefault()
+    const createCompany = () => {
       loading.value = true
       companyInfo.domain = store.state.company.data.domain
 
@@ -74,6 +73,8 @@ export default {
           loading.value = false
           break
       }
+
+      console.log("pre-dispatch")
 
       store.dispatch("createCompany", companyInfo).then(() => {
         loading.value = false
