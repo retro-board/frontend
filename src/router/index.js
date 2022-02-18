@@ -170,31 +170,29 @@ const routes = [
       ],
     },
     component: () => import('@/views/company/Company'),
-    children: [
-      {
-        path: 'create',
-        name: 'CreateCompany',
-        meta: {
-          requiresAuth: true,
-          title: "Create Company - Retro Board",
-          metaTags: [
-            {
-              name: 'description',
-              content: 'Create Company - Retro Board'
-            },
-            {
-              property: 'og:description',
-              content: 'Create Company - Retro Board'
-            },
-            {
-              property: 'og:title',
-              content: 'Create Company - Retro Board'
-            },
-          ],
+  },
+  {
+    path: '/company/create',
+    name: 'CreateCompany',
+    meta: {
+      requiresAuth: true,
+      title: "Create Company - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Create Company - Retro Board'
         },
-        component: () => import('@/views/company/Create'),
-      },
-    ]
+        {
+          property: 'og:description',
+          content: 'Create Company - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'Create Company - Retro Board'
+        },
+      ],
+    },
+    component: () => import('@/views/company/Create'),
   },
   {
     path: '/board/:board_id',
@@ -219,54 +217,52 @@ const routes = [
         },
       ],
     },
-    children: [
-      {
-        path: 'setup',
-        name: 'BoardSetup',
-        meta: {
-          requiresAuth: true,
-          title: store.state.board.name + " Setup - Retro Board",
-          metaTags: [
-            {
-              name: 'description',
-              content: store.state.board.name + " Setup - Retro Board"
-            },
-            {
-              property: 'og:description',
-              content: store.state.board.name + " Setup - Retro Board"
-            },
-            {
-              property: 'og:title',
-              content: store.state.board.name + " Setup - Retro Board"
-            },
-          ],
+  },
+  {
+    path: '/board/:board_id/setup',
+    name: 'BoardSetup',
+    meta: {
+      requiresAuth: true,
+      title: store.state.board.name + " Setup - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: store.state.board.name + " Setup - Retro Board"
         },
-        component: BoardSetup,
-      },
-      {
-        path: 'leader',
-        name: 'BoardLeader',
-        component: () => import('@/views/board/Leader'),
-        meta: {
-          requiresAuth: true,
-          title: store.state.board.name + " Leader - Retro Board",
-          metaTags: [
-            {
-              name: 'description',
-              content: store.state.board.name + " Leader - Retro Board"
-            },
-            {
-              property: 'og:description',
-              content: store.state.board.name + " Leader - Retro Board"
-            },
-            {
-              property: 'og:title',
-              content: store.state.board.name + " Leader - Retro Board"
-            },
-          ],
+        {
+          property: 'og:description',
+          content: store.state.board.name + " Setup - Retro Board"
         },
-      },
-    ]
+        {
+          property: 'og:title',
+          content: store.state.board.name + " Setup - Retro Board"
+        },
+      ],
+    },
+    component: BoardSetup,
+  },
+  {
+    path: '/board/:board_team/leader',
+    name: 'BoardLeader',
+    component: () => import('@/views/board/Leader'),
+    meta: {
+      requiresAuth: true,
+      title: store.state.board.name + " Leader - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: store.state.board.name + " Leader - Retro Board"
+        },
+        {
+          property: 'og:description',
+          content: store.state.board.name + " Leader - Retro Board"
+        },
+        {
+          property: 'og:title',
+          content: store.state.board.name + " Leader - Retro Board"
+        },
+      ],
+    },
   },
   {
     path: '/board',
@@ -290,31 +286,29 @@ const routes = [
         },
       ],
     },
-    children: [
-      {
-        path: '/board/create',
-        name: 'BoardCreate',
-        Component: BoardSetup,
-        meta: {
-          requiresAuth: true,
-          title: "Create Board - Retro Board",
-          metaTags: [
-            {
-              name: 'description',
-              content: 'Create Board - Retro Board'
-            },
-            {
-              property: 'og:description',
-              content: 'Create Board - Retro Board'
-            },
-            {
-              property: 'og:title',
-              content: 'Create Board - Retro Board'
-            },
-          ],
+  },
+  {
+    path: '/board/create',
+    name: 'BoardCreate',
+    Component: BoardSetup,
+    meta: {
+      requiresAuth: true,
+      title: "Create Board - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Create Board - Retro Board'
         },
-      },
-    ]
+        {
+          property: 'og:description',
+          content: 'Create Board - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'Create Board - Retro Board'
+        },
+      ],
+    },
   },
   {
     path: '/boards',
@@ -362,31 +356,29 @@ const routes = [
         },
       ],
     },
-    children: [
-      {
-        path: 'callback',
-        name: 'UserCallback',
-        component: () => import('@/views/user/Callback'),
-        meta: {
-          backendRedirected: true,
-          title: "User Callback - Retro Board",
-          metaTags: [
-            {
-              name: 'description',
-              content: 'User Callback - Retro Board'
-            },
-            {
-              property: 'og:description',
-              content: 'User Callback - Retro Board'
-            },
-            {
-              property: 'og:title',
-              content: 'User Callback - Retro Board'
-            },
-          ],
+  },
+  {
+    path: '/user/callback',
+    name: 'UserCallback',
+    component: () => import('@/views/user/Callback'),
+    meta: {
+      backendRedirected: true,
+      title: "User Callback - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'User Callback - Retro Board'
         },
-      },
-    ]
+        {
+          property: 'og:description',
+          content: 'User Callback - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'User Callback - Retro Board'
+        },
+      ],
+    },
   },
   {
     path: '/404',
