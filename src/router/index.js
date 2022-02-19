@@ -195,12 +195,34 @@ const routes = [
     component: () => import('@/views/company/Create'),
   },
   {
+    path: '/example',
+    name: 'ExampleBoard',
+    component : () => import('@/views/board/Example'),
+    meta: {
+      isPublic: true,
+      title: "Example - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: "Example - Retro Board"
+        },
+        {
+          property: 'og:description',
+          content: "Example - Retro Board"
+        },
+        {
+          property: 'og:title',
+          content: "Example - Retro Board"
+        },
+      ],
+    }
+  },
+  {
     path: '/board/:board_id',
     name: 'TeamBoard',
     component: Board,
     meta: {
-      requiresAuth: false,
-      isPublic: true,
+      requiresAuth: true,
       title: store.state.board.name + " - Retro Board",
       metaTags: [
         {
@@ -418,13 +440,13 @@ router.beforeEach((to, from, next) => {
   } else {
     document.title = previousNearestWithMeta.meta.title
   }
-  // nearestWithMeta.meta.tags.map(tagDef => {
-  //   const tag = document.createElement('meta')
-  //   Object.keys(tagDef).forEach(key => {
-  //     tag.setAttribute(key, tagDef[key])
-  //   })
-  //   return tag
-  // }).forEach(tag => document.head.appendChild(tag))
+  nearestWithMeta.meta.tags.map(tagDef => {
+    const tag = document.createElement('meta')
+    Object.keys(tagDef).forEach(key => {
+      tag.setAttribute(key, tagDef[key])
+    })
+    return tag
+  }).forEach(tag => document.head.appendChild(tag))
 
   if (to.meta.requiresAuth && !store.state.user.token) {
     next({
