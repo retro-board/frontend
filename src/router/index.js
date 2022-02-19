@@ -433,20 +433,20 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const nearestWithTitle = to.matched.slice().reverse().find(r => r.meta && r.meta.title)
-  const nearestWithMeta = to.matched.slice().reverse().find(r => r.meta && r.meta.metaTags)
+  //const nearestWithMeta = to.matched.slice().reverse().find(r => r.meta && r.meta.metaTags)
   const previousNearestWithMeta = from.matched.slice().reverse().find(r => r.meta && r.meta.metaTags)
   if (nearestWithTitle) {
     document.title = nearestWithTitle.meta.title
   } else {
     document.title = previousNearestWithMeta.meta.title
   }
-  nearestWithMeta.meta.tags.map(tagDef => {
-    const tag = document.createElement('meta')
-    Object.keys(tagDef).forEach(key => {
-      tag.setAttribute(key, tagDef[key])
-    })
-    return tag
-  }).forEach(tag => document.head.appendChild(tag))
+  // nearestWithMeta.meta.tags.map(tagDef => {
+  //   const tag = document.createElement('meta')
+  //   Object.keys(tagDef).forEach(key => {
+  //     tag.setAttribute(key, tagDef[key])
+  //   })
+  //   return tag
+  // }).forEach(tag => document.head.appendChild(tag))
 
   if (to.meta.requiresAuth && !store.state.user.token) {
     next({
