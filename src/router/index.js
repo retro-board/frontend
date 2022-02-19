@@ -433,7 +433,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const nearestWithTitle = to.matched.slice().reverse().find(r => r.meta && r.meta.title)
-  //const nearestWithMeta = to.matched.slice().reverse().find(r => r.meta && r.meta.metaTags)
+  const nearestWithMeta = to.matched.slice().reverse().find(r => r.meta && r.meta.metaTags)
   const previousNearestWithMeta = from.matched.slice().reverse().find(r => r.meta && r.meta.metaTags)
   if (nearestWithTitle) {
     document.title = nearestWithTitle.meta.title
