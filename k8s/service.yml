@@ -9,6 +9,9 @@ metadata:
     app: frontend
 spec:
   replicas: 2
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
   selector:
     matchLabels:
       name: frontend
