@@ -110,7 +110,6 @@ const store = createStore({
         getBoards({commit}) {
             let getURL = "/boards"
                 getURL += "?subdomain=" + this.state.company.data.subDomain;
-                getURL += "&role=" + this.state.user.data.role;
 
             return axiosClient.get(getURL)
                 .then(({data}) => {
@@ -119,6 +118,15 @@ const store = createStore({
                     return data;
                 })
         },
+        getCompanyInfo({commit}) {
+            let getURL = "/company"
+                getURL += "?subdomain=" + this.state.company.data.subDomain;
+            return axiosClient.get(getURL).then(({data}) => {
+                commit("setCompanyLoading", false);
+                commit("setCompanyInfo", data);
+                return data;
+            })
+        }
     },
     mutations: {
         logout: (state) => {
@@ -148,6 +156,9 @@ const store = createStore({
         },
         setBoardsLoading: (state, loading) => {
             state.boards.loading = loading;
+        },
+        setCompanyLoading: (state, loading) => {
+            state.company.loading = loading
         },
         setBoards: (state, boardsData) => {
             state.boards.data = boardsData;

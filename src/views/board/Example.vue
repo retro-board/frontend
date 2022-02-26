@@ -15,8 +15,8 @@
           </h4>
         </div>
         <div class="p-6 border-t-4">
-          <Topic topic-content="Good Things" topic-votes="1" />
-          <Topic topic-content="More Good Things" topic-votes="2" mine />
+          <ExampleTopic topic-content="Good Things" topic-votes="1" />
+          <ExampleTopic topic-content="More Good Things" topic-votes="2" mine />
         </div>
         <a class="absolute left-2 bottom-0" href="">
           <font-awesome-icon name="plus-square" :icon="['far', 'plus-square']" />
@@ -33,7 +33,7 @@
           </h4>
         </div>
         <div class="p-6 border-t-4">
-          <Topic topic-content="Bad Things" topic-votes="3" />
+          <ExampleTopic topic-content="Bad Things" topic-votes="3" />
         </div>
         <a class="absolute left-2 bottom-0" href="">
           <font-awesome-icon name="plus-square" :icon="['far', 'plus-square']" />
@@ -50,7 +50,7 @@
           </h4>
         </div>
         <div class="p-6 border-t-4">
-          <Topic topic-content="Continue Things" topic-votes="9" mine />
+          <ExampleTopic topic-content="Continue Things" topic-votes="9" mine />
         </div>
         <a class="absolute left-2 bottom-0" href="">
           <font-awesome-icon name="plus-square" :icon="['far', 'plus-square']" />
@@ -64,8 +64,8 @@
       Actions
     </h4>
     <div class="p-6 border-t-4">
-      <Action action="make better" />
-      <Action action="make better again" done />
+      <ExampleAction action="make better" />
+      <ExampleAction action="make better again" done />
     </div>
     <a class="absolute left-2 bottom-0" href="">
       <font-awesome-icon name="plus-square" :icon="['far', 'plus-square']" />
@@ -74,16 +74,16 @@
 </template>
 
 <script>
-import Topic from '@/components/Topic'
-import Action from '@/components/Action'
+import ExampleTopic from '@/components/example/Topic'
+import ExampleAction from '@/components/example/Action'
 
 export default {
   name: "ExampleBoardView",
   computed: {
   },
   components: {
-    Topic,
-    Action,
+    ExampleTopic,
+    ExampleAction,
   },
   setup() {
 

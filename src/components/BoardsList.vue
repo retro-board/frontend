@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col py-4 px-6 shadow-md bg-white hover:bg-grey-50 mb-2 border-white">
     <div class="flex-justify between items-center relative">
-      <router-link :to="{name:'TeamBoard', params:{board_id: id}}">
+      <router-link :to="{name:'TeamBoard', params:{board_link: link}}">
         <div class="flex">
           {{ name }}
         </div>
@@ -30,6 +30,7 @@ export default {
   props: {
     name: String,
     id: Number,
+    link: String,
     retrosCompleted: Number,
     teamScore: Number,
     teamScorePrevious: Number,

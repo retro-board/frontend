@@ -13,6 +13,7 @@
         :key="board.id"
         :id="board.id"
         :name="board.name"
+        :link="board.link_name"
         :teamScore="board.team_score"
         :teamScorePrevious="board.previous_score"
         :retrosCompleted="board.retros_completed" />
@@ -36,11 +37,13 @@ export default {
   },
 
   setup() {
-    store.dispatch("getBoards")
+    const s = useStore()
+    if (s.getters.allowedTo('board:list')) {
+      store.dispatch("getBoards")
+    }
 
     return {
       allowedToCreateBoard() {
-        const s = useStore()
         return s.getters.allowedTo('board:create')
       },
     }

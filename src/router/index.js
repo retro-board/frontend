@@ -218,7 +218,7 @@ const routes = [
     }
   },
   {
-    path: '/board/:board_id',
+    path: '/board/:board_link',
     name: 'TeamBoard',
     component: Board,
     meta: {
