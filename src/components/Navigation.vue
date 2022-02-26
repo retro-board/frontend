@@ -8,11 +8,12 @@
          </a>
        </div>
        <div class="flex items-center gap-2">
-         <h1 class="text-4xl underline">{{ companyName }}</h1>
+         <h1 class="text-4xl">{{ companyName }}</h1>
        </div>
        <ul class="flex flex-1 justify-end gap-x-10">
-         <router-link class="cursor-pointer" to="/">Home</router-link>
-         <router-link class="cursor-pointer" to="/boards" v-if="loggedIn">Boards</router-link>
+         <router-link class="cursor-pointer" :to="{name:'Home'}" v-if="!loggedIn">Home</router-link>
+         <router-link class="cursor-pointer" :to="{name:'BoardList'}" v-if="loggedIn">Boards</router-link>
+         <router-link class="cursor-pointer" :to="{name:'CompanyInfo'}" v-if="allowedToViewCompany">Company</router-link>
 
          <li class="cursor-pointer" v-if="loggedIn">
            <a @click="logout">Logout</a>
@@ -26,14 +27,20 @@
 </template>
 
 <script>
-import { mapState, useStore } from "vuex";
+import {
+  mapState,
+  useStore,
+} from "vuex";
 
 export default {
   computed: {
+    allowedToViewCompany() {
+      return this.$store.getters.allowedTo('company:view');
+    },
     ...mapState({
-      companyName: state => state.company.name,
+      companyName: state => state.company.data.name,
       loggedIn: state => state.user.token !== null,
-    })
+    }),
   },
   setup() {
     const store = useStore()
@@ -50,9 +57,16 @@ export default {
       accountURL = process.env.VUE_APP_API_URL;
     }
 
+    // function allowedToViewCompany() {
+    //   console.log(store)
+    //   return false
+    //   //return store.getters.allowedTo('company:view')/
+    // }
+
     return {
       accountURL,
       logout,
+      // allowedToViewCompany,
     }
   },
   name: 'NavigationComponent',

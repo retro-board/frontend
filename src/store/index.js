@@ -25,6 +25,7 @@ const store = createStore({
                 id: null,
                 name: null,
                 role: null,
+                perms: [],
             },
             token: sessionStorage.getItem('TOKEN'),
         },
@@ -38,6 +39,20 @@ const store = createStore({
         },
         getUser: state => {
             return state.user;
+        },
+        allowedTo: (state) => (checkPerm) => {
+            if (state.user.token === null) {
+                return false;
+            }
+
+            for (let i = 0; i < state.user.data.perms.length; i++) {
+                let perm = state.user.data.perms[i]
+                if (perm === checkPerm) {
+                    return true
+                }
+            }
+
+            return false
         },
     },
     actions: {
@@ -64,6 +79,7 @@ const store = createStore({
                             id: dataset.id,
                             name: dataset.name,
                             role: dataset.role,
+                            perms: dataset.perms,
                         });
                         break;
                     case 'retro_company':
@@ -118,6 +134,7 @@ const store = createStore({
             state.user.data.id = userData.id;
             state.user.data.name = userData.name;
             state.user.data.role = userData.role;
+            state.user.data.perms = userData.perms;
 
             sessionStorage.setItem('TOKEN', userData.id);
         },

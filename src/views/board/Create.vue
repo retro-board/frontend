@@ -14,9 +14,14 @@
         <input type="text" id="company_name" name="company_name" required class="p-2 text-green-500 focus:outline-none" v-model="boardInfo.columns" placeholder="3" />
       </div>
 
+      <div class="flex flex-col mb-2" v-for="n in boardInfo.columns" :key="n">
+        <label for="column-{{n}}-name" class="mb-1 text-sm text-at-light-green">Column {{n}} name</label>
+        <input type="text" id="column-{{n}}-name" name="column-{{n}}-name" required class="p-2 text-green-500 focus:outline-none" v-model="boardInfo.columnNames[n].name" placeholder="{{boardInfo.columnNames[n].name}}" />
+      </div>
+
       <div class="flex flex-col mb-2">
-        <label for="first_team_name" class="mb-1 text-sm text-at-light-green">First Retro-Board Team Name</label>
-        <input type="text" id="first_team_name" name="first_team_name" required class="p-2 text-green-500 focus:outline-none" v-model="boardInfo.teamName" />
+        <label for="team_name" class="mb-1 text-sm text-at-light-green">First Retro-Board Team Name</label>
+        <input type="text" id="team_name" name="team_name" required class="p-2 text-green-500 focus:outline-none" v-model="boardInfo.teamName" placeholder="Tester" />
       </div>
 
       <button type="submit" class="mt-6 py-2 px-6 rounded-sm self-start text-sm text-white bg-at-light-green duration-200 border-solid border-2 border-transparent hover:border-white hover:bg-white hover:text-at-light-green">Create</button>
@@ -28,13 +33,30 @@
 import { ref } from 'vue'
 
 export default {
-  name: "BoardSetupView",
+  name: "BoardCreateView",
   components: {
   },
   setup() {
     const boardInfo = {
-      teamName: ref(null),
-      columns: ref(0),
+      teamName: "",
+      columns: 4,
+      columnNames: [
+        {
+          name: "",
+        },
+        {
+          name: "Good",
+        },
+        {
+          name: "Bad",
+        },
+        {
+          name: "Continue",
+        },
+        {
+          name: "Appreciate",
+        },
+      ],
     }
 
     const errorMsg = ref(null)

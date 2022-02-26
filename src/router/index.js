@@ -291,7 +291,7 @@ const routes = [
     name: 'DefaultBoard',
     component: BoardList,
     meta: {
-      requiresAuth: true,
+      requiresAuth: false,
       title: "Board - Retro Board",
       metaTags: [
         {
@@ -312,7 +312,7 @@ const routes = [
   {
     path: '/board/create',
     name: 'BoardCreate',
-    Component: BoardSetup,
+    component: () => import('@/views/board/Create'),
     meta: {
       requiresAuth: true,
       title: "Create Board - Retro Board",
