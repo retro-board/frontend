@@ -21,7 +21,8 @@
 </template>
 
 <script>
-import {useStore} from 'vuex'
+import { useStore } from 'vuex'
+
 import store from '@/store'
 import BoardsList from '@/components/BoardsList'
 

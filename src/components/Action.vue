@@ -7,22 +7,33 @@
 
   <div class="relative block p-4 border border-gray-500 shadow-xl rounded-xl mb-2 bg-white" v-else>
     <a class="absolute left-2 top-1" href="">
-      <font-awesome-icon name="minus-square" :icon="['far', 'minus-square']" />
+      <MinusCircleIcon class="w-5 h-5" />
     </a>
 
     <div>
       {{ action }}
     </div>
     <a class="absolute right-4 top-1/3" href="">
-      <font-awesome-icon name="action-done" icon="check" />
+      <CheckIcon class="w-5 h-5 " />
     </a>
   </div>
 </template>
 
 <script>
+import {
+    CheckIcon,
+} from '@heroicons/vue/solid'
+import {
+    MinusCircleIcon,
+} from '@heroicons/vue/outline'
+
 export default {
   setup() {
     return {}
+  },
+  components: {
+    CheckIcon,
+    MinusCircleIcon
   },
   props: {
     action: String,
