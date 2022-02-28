@@ -200,6 +200,7 @@ const routes = [
     component : () => import('@/views/board/Example'),
     meta: {
       isPublic: true,
+      requiresAuth: false,
       title: "Example - Retro Board",
       metaTags: [
         {
@@ -452,8 +453,6 @@ router.beforeEach((to, from, next) => {
     next({
       name: 'Home',
     })
-  } else if (to.meta.backendRedirected && !store.state.user.token) {
-    next();
   } else {
     next()
   }

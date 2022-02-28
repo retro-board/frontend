@@ -1,5 +1,4 @@
 import { createStore } from 'vuex'
-import { useRouter } from "vue-router"
 import jwtDecode from "jwt-decode";
 import axiosClient from '../axios';
 
@@ -64,14 +63,7 @@ const store = createStore({
             commit('logout')
         },
         parseLoginData({commit}) {
-            const router = useRouter();
-
             let cookies = document.cookie.split(';')
-            if (cookies[0] === "") {
-                commit('logout')
-                router.push({name: "Home"})
-                return
-            }
 
             for (let step = 0; step < cookies.length; step++) {
                 let cookie = cookies[step].split('=');

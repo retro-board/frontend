@@ -4,7 +4,7 @@
     <div class="relative h-11" v-if="allowedToCreateBoard">
       <div class="absolute top-1 right-1 bg-green-300 p-1">
         <router-link :to="{name:'BoardCreate'}">
-          Create New Board <font-awesome-icon name="plus-square" :icon="['far', 'plus-square']" />
+          Create New Board <PlusCircleIcon class="w-6 h-6 mb-1" />
         </router-link>
       </div>
     </div>
@@ -37,6 +37,7 @@
 
 <script>
 import { useStore } from 'vuex'
+import { PlusCircleIcon } from '@heroicons/vue/outline'
 
 import store from '@/store'
 import BoardsList from '@/components/BoardsList'
@@ -45,6 +46,7 @@ export default {
   name: "BoardList",
   components: {
     BoardsList,
+    PlusCircleIcon
   },
   computed: {
     boards() {

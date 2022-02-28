@@ -24,11 +24,9 @@
 <script>
 import {
     MinusCircleIcon,
-} from '@heroicons/vue/outline'
-import {
     ThumbUpIcon,
     ThumbDownIcon,
-} from '@heroicons/vue/solid'
+} from '@heroicons/vue/outline'
 
 export default {
   setup() {

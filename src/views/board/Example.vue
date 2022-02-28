@@ -19,7 +19,7 @@
           <ExampleTopic topic-content="More Good Things" topic-votes="2" mine />
         </div>
         <a class="absolute left-2 bottom-0" href="">
-          <font-awesome-icon name="plus-square" :icon="['far', 'plus-square']" />
+          <PlusCircleIcon class="w-6 h-6 mb-1" />
         </a>
       </div>
     </div>
@@ -36,7 +36,7 @@
           <ExampleTopic topic-content="Bad Things" topic-votes="3" />
         </div>
         <a class="absolute left-2 bottom-0" href="">
-          <font-awesome-icon name="plus-square" :icon="['far', 'plus-square']" />
+          <PlusCircleIcon class="w-6 h-6 mb-1" />
         </a>
       </div>
     </div>
@@ -53,7 +53,7 @@
           <ExampleTopic topic-content="Continue Things" topic-votes="9" mine />
         </div>
         <a class="absolute left-2 bottom-0" href="">
-          <font-awesome-icon name="plus-square" :icon="['far', 'plus-square']" />
+          <PlusCircleIcon class="w-6 h-6 mb-1" />
         </a>
       </div>
     </div>
@@ -68,12 +68,14 @@
       <ExampleAction action="make better again" done />
     </div>
     <a class="absolute left-2 bottom-0" href="">
-      <font-awesome-icon name="plus-square" :icon="['far', 'plus-square']" />
+      <PlusCircleIcon class="w-6 h-6 mb-1" />
     </a>
   </div>
 </template>
 
 <script>
+import { PlusCircleIcon } from "@heroicons/vue/outline";
+
 import ExampleTopic from '@/components/example/Topic'
 import ExampleAction from '@/components/example/Action'
 
@@ -84,6 +86,7 @@ export default {
   components: {
     ExampleTopic,
     ExampleAction,
+    PlusCircleIcon,
   },
   setup() {
 

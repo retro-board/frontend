@@ -7,7 +7,7 @@
            <h1 class="text-lg">Retro-Board</h1>
          </a>
        </div>
-       <div class="flex items-center gap-2">
+       <div class="flex items-center gap-2" v-if="loggedIn">
          <h1 class="text-4xl">{{ companyName }}</h1>
        </div>
        <ul class="flex flex-1 justify-end gap-x-10">
@@ -57,16 +57,9 @@ export default {
       accountURL = process.env.VUE_APP_API_URL;
     }
 
-    // function allowedToViewCompany() {
-    //   console.log(store)
-    //   return false
-    //   //return store.getters.allowedTo('company:view')/
-    // }
-
     return {
       accountURL,
       logout,
-      // allowedToViewCompany,
     }
   },
   name: 'NavigationComponent',
