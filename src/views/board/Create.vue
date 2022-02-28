@@ -18,9 +18,12 @@
       <div class="flex flex-col mb-2">
         <Listbox v-model="boardInfo.columns">
           <ListboxLabel class="mb-1 text-sm text-at-light-green">Number of columns</ListboxLabel>
-          <ListboxButton>{{boardInfo.columns}}</ListboxButton>
-          <ListboxOptions>
-            <ListboxOption v-for="colNumber in 10" :key="colNumber" :value="colNumber">{{colNumber}}</ListboxOption>
+          <ListboxButton class="relative text-green-500 bg-white shadow-mg py-2 pl-3 pr-10 text-left ring-1 ring-black">
+            {{boardInfo.columns}}
+            <SelectorIcon class="absolute right-1 top-2.5 w-5 h-5" />
+          </ListboxButton>
+          <ListboxOptions class="bg-white rounded-md shadow-lg py-1 mt-1">
+            <ListboxOption v-for="colNumber in 4" :key="colNumber" :value="colNumber" class="text-green-500 bg-white py-2 pl-10 cursor-pointer hover:bg-amber-300">{{colNumber}}</ListboxOption>
           </ListboxOptions>
         </Listbox>
       </div>
@@ -32,11 +35,20 @@
       <hr />
 
       <div class="flex flex-col mb-2">
-        <label for="appreciate" class="mb-1 text-sm text-at-light-green">Appreciate Column</label>
-        <input type="checkbox" id="appreciate" name="appreciate" class="p-2 text-green-500 focus:outline-none" v-model="boardInfo.appreciate" />
+        <Listbox v-model="boardInfo.appreciate" @change="appreciateTrigger">
+          <ListboxLabel class="mb-1 text-sm text-at-light-green">Appreciation Column</ListboxLabel>
+          <ListboxButton class="relative text-green-500 bg-white shadow-mg py-2 pl-3 pr-10 text-left ring-1 ring-black">
+            Yes
+            <SelectorIcon class="absolute right-1 top-2.5 w-5 h-5" />
+          </ListboxButton>
+          <ListboxOptions class="bg-white rounded-md shadow-lg py-1 mt-1">
+            <ListboxOption class="text-green-500 bg-white py-2 pl-10 cursor-pointer hover:bg-amber-300">Yes</ListboxOption>
+            <ListboxOption class="text-green-500 bg-white py-2 pl-10 cursor-pointer hover:bg-amber-300">No</ListboxOption>
+          </ListboxOptions>
+        </Listbox>
       </div>
-      <div class="flex flex-col mb-2">
-        <label for="appreciate_title" class="mb-1 text-sm text-at-light-green">How many columns</label>
+      <div class="flex flex-col mb-2" id="appreciateShow">
+        <label for="appreciate_title" class="mb-1 text-sm text-at-light-green">Appreciation Column Title</label>
         <input type="text" id="appreciate_title" name="appreciate_title" required class="p-2 text-green-500 focus:outline-none" v-model="boardInfo.appreciate_title" placeholder="Appreciation" />
       </div>
 
@@ -54,6 +66,9 @@ import {
   ListboxOptions,
   ListboxLabel,
 } from '@headlessui/vue'
+import {
+  SelectorIcon
+} from '@heroicons/vue/outline'
 
 export default {
   name: "BoardCreateView",
@@ -63,11 +78,13 @@ export default {
     ListboxOption,
     ListboxOptions,
     ListboxLabel,
+    SelectorIcon
   },
   setup() {
     const boardInfo = {
       teamName: "",
       columns: 3,
+      appreciate: false,
       columnNames: [
         {
           name: "",
@@ -81,6 +98,9 @@ export default {
         {
           name: "Continue",
         },
+        {
+          name: "Other",
+        }
       ],
     }
 
@@ -90,10 +110,19 @@ export default {
 
     }
 
+    const appreciateTrigger = (ev) => {
+      if (ev.target.checked) {
+        document.getElementById("appreciateShow").style.display = "block"
+      } else {
+        document.getElementById("appreciateShow").style.display = "none"
+      }
+    }
+
     return {
       createBoard,
       boardInfo,
       errorMsg,
+      appreciateTrigger,
     }
   },
 }

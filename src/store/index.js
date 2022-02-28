@@ -41,7 +41,11 @@ const store = createStore({
             return state.user;
         },
         allowedTo: (state) => (checkPerm) => {
-            if (state.user.token === null) {
+            if (
+                state.user.token === null ||
+                state.user.data.perms === null ||
+                state.user.data.perms === undefined
+            ) {
                 return false;
             }
 
