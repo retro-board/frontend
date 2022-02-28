@@ -34,6 +34,29 @@ const routes = [
     component: () => import('@/views/Home')
   },
   {
+    path: '/company/upgrade',
+    name: 'Upgrade',
+    component: () => import('@/views/site/Pricing'),
+    meta: {
+      isPublic: true,
+      title: "Upgrade Account - Retro Board",
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Upgrade Account - Retro Board'
+        },
+        {
+          property: 'og:description',
+          content: 'Upgrade Account - Retro Board'
+        },
+        {
+          property: 'og:title',
+          content: 'Upgrade Account - Retro Board'
+        },
+      ],
+    },
+  },
+  {
     path: '/pricing',
     name: 'Pricing',
     component: () => import('@/views/site/Pricing'),
@@ -449,6 +472,32 @@ router.beforeEach((to, from, next) => {
   //   return tag
   // }).forEach(tag => document.head.appendChild(tag))
 
+  // No home button for logged in people
+  if (to.name === "Home" && store.state.user.token) {
+    next({
+      name: 'BoardList',
+    })
+    return
+  }
+
+  // need to be logged in for a custom subdomain
+  if (!store.state.user.token) {
+    const subdomain = window.location.host.split('.')[0]
+    if (subdomain) {
+      switch (subdomain) {
+        case 'www':
+        case 'retro-board':
+        case 'localhost:8080':
+          next()
+          return
+        default:
+          window.location.host = "retro-board.it"
+          return;
+      }
+    }
+  }
+
+  // auth check
   if (to.meta.requiresAuth && !store.state.user.token) {
     next({
       name: 'Home',

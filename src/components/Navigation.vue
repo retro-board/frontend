@@ -8,7 +8,11 @@
          </a>
        </div>
        <div class="flex items-center gap-2" v-if="loggedIn">
-         <h1 class="text-4xl">{{ companyName }}</h1>
+         <h1 class="text-4xl">
+           <router-link class="class-pointer" :to="{name: 'Home'}">
+             {{ companyName }}
+           </router-link>
+         </h1>
        </div>
        <ul class="flex flex-1 justify-end gap-x-10">
          <router-link class="cursor-pointer" :to="{name:'Home'}" v-if="!loggedIn">Home</router-link>

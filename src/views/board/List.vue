@@ -2,11 +2,11 @@
   <div v-if="boards.loading" class="flex justify-center">Loading...</div>
   <div v-else-if="boards.data.length">
     <div class="relative h-11" v-if="allowedToCreateBoard">
-      <div class="absolute top-1 right-1 bg-green-300 p-1">
-        <router-link :to="{name:'BoardCreate'}">
-          Create New Board <PlusCircleIcon class="w-6 h-6 mb-1" />
-        </router-link>
-      </div>
+      <router-link :to="{name:'BoardCreate'}">
+        <div class="absolute top-1 right-1 bg-green-300 p-2 rounded text-sm">
+          Create New Board <PlusCircleIcon class="w-4 h-4 mr-0 -mt-0.5 inline" />
+        </div>
+      </router-link>
     </div>
     <BoardsList
         v-for="board in boards.data"
