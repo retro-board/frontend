@@ -30,6 +30,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - uses: fastify/github-action-merge-dependabot@v2.1.1
+      - uses: fastify/github-action-merge-dependabot@v3.0.0
         with:
           github-token: ${{ secrets.GH_SECRET }}
