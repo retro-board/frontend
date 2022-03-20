@@ -40,6 +40,8 @@ const store = createStore({
             return state.user;
         },
         allowedTo: (state) => (checkPerm) => {
+            console.log("state user", state.user.data.perms)
+
             if (
                 state.user.token === null ||
                 state.user.data.perms === null ||
@@ -106,6 +108,7 @@ const store = createStore({
         getBoards({commit}) {
             let getURL = "/boards"
                 getURL += "?subdomain=" + this.state.company.data.subDomain;
+            console.log("get", getURL)
 
             return axiosClient.get(getURL)
                 .then(({data}) => {
