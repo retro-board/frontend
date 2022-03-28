@@ -38,4 +38,4 @@ jobs:
       - uses: fastify/github-action-merge-dependabot@v3
         name: Merge Dependabot
         with:
-          github-token: ${{ secrets.GH_SECRET }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
