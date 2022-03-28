@@ -10,7 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        name: Checkout
       - uses: actions/setup-node@v1
+        name: Setup Node
         with:
           always-auth: true
           node-version: 15
@@ -34,5 +36,6 @@ jobs:
     needs: test
     steps:
       - uses: fastify/github-action-merge-dependabot@v3
+        name: Merge Dependabot
         with:
           github-token: ${{ secrets.GH_SECRET }}
