@@ -1089,10 +1089,10 @@
   resolved "https://npm.chewedfeed.com/@soda%2fget-current-script/-/get-current-script-1.0.2.tgz#a53515db25d8038374381b73af20bb4f2e508d87"
   integrity sha512-T7VNNlYVM1SgQ+VsMYhnDkcGmWhQdL0bDyGm5TlQ3GBXnJscEClUUOKduWTmm2zCnvNLC1hc3JpuXjs/nFOc5w==
 
-"@tailwindcss/forms@^0.5.0":
-  version "0.5.0"
-  resolved "https://npm.chewedfeed.com/@tailwindcss%2fforms/-/forms-0.5.0.tgz#d4bea2560a10aac642573e72d3b4d62a88960449"
-  integrity sha512-KzWugryEBFkmoaYcBE18rs6gthWCFHHO7cAZm2/hv3hwD67AzwP7udSCa22E7R1+CEJL/FfhYsJWrc0b1aeSzw==
+"@tailwindcss/forms@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.5.1.tgz#7fe86b9b67e6d91cb902e2d3f4ebe561cc057a13"
+  integrity sha512-QSwsFORnC2BAP0lRzQkz1pw+EzIiiPdk4e27vGQjyXkwJPeC7iLIRVndJzf9CJVbcrrIcirb/TfxF3gRTyFEVA==
   dependencies:
     mini-svg-data-uri "^1.2.3"
 
