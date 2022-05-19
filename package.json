@@ -35,7 +35,7 @@
     "eslint": "^8.15.0",
     "eslint-plugin-vue": "^9.0.1",
     "sass": "^1.51.0",
-    "sass-loader": "^12.4.0",
+    "sass-loader": "^13.0.0",
     "vue-cli-plugin-tailwind": "~3.0.0"
   }
 }
