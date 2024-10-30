@@ -16,7 +16,7 @@
     "cookie": "^1.0.1",
     "core-js": "^3.38.1",
     "jwt-decode": "^4.0.0",
-    "pinia": "^2.2.4",
+    "pinia": "^2.2.5",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
     "uid": "^2.0.2",
